@@ -56,7 +56,7 @@ walk(parentdir, function (err, dirs) {
 	newfile.on('error', err => err);
 
 	directories.forEach(function (v) {
-		newfile.write(baseURL + v.replace(path.extname(v), '-#affid#' + path.extname(v) + '\n\n'), 'utf8');
+		newfile.write(v.substring(0, v.indexOf('/')) + '\n' + baseURL + v.replace(path.extname(v), '-#affid#' + path.extname(v) + '\n\n'), 'utf8');
 	});
 	newfile.end();
 });
